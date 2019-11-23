@@ -1,12 +1,11 @@
 [package]
-name = "hyphenation"
-version = "0.7.1"
+name = "spandex-hyphenation"
+version = "0.7.2"
 
-authors = ["Andrew <andrew@banausia.com>"]
+authors = ["Thomas Forgione <thomas@forgione.fr>", "Andrew <andrew@banausia.com>"]
 license = "Apache-2.0/MIT"
-repository = "https://github.com/tapeinosyne/hyphenation"
-homepage = "https://github.com/tapeinosyne/hyphenation"
-documentation = "https://docs.rs/hyphenation"
+repository = "https://github.com/rust-spandex/hyphenation"
+homepage = "https://github.com/rust-spandex/hyphenation"
 
 readme = "README.md"
 description = "Knuth-Liang hyphenation for a variety of languages"
