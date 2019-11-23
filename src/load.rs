@@ -177,7 +177,7 @@ impl fmt::Display for Error {
 Language mismatch: attempted to load a dictionary for `{}`, but found
 a dictionary for `{}` instead.", expected, found),
             Error::Resource => {
-                let e = self as &error::Error;
+                let e = self as &dyn error::Error;
                 e.description().fmt(f)
             }
         }
