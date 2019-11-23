@@ -214,9 +214,9 @@ fn main() {
     let dict_source = paths.source_item(dict_folder);
     let dict_out = paths.destine_item(dict_folder);
 
-    let ext_langs = vec![Catalan, Hungarian];
-    let std_langs =
-        vec![ Afrikaans, Armenian, Assamese, Basque, Belarusian, Bengali, Bulgarian, Catalan,
+    let ext_langs = vec![]; // vec![Catalan, Hungarian];
+    let std_langs = vec![EnglishUS];
+        /* vec![ Afrikaans, Armenian, Assamese, Basque, Belarusian, Bengali, Bulgarian, Catalan,
               Chinese, Coptic, Croatian, Czech, Danish, Dutch, EnglishGB, EnglishUS, Esperanto,
               Estonian, Ethiopic, Finnish, French, Friulan, Galician, Georgian, German1901,
               German1996, GermanSwiss, GreekAncient, GreekMono, GreekPoly, Gujarati, Hindi,
@@ -226,7 +226,7 @@ fn main() {
               Piedmontese, Polish, Portuguese, Romanian, Romansh, Russian, Sanskrit,
               SerbianCyrillic, SerbocroatianCyrillic, SerbocroatianLatin, SlavonicChurch, Slovak,
               Slovenian, Spanish, Swedish, Tamil, Telugu, Thai, Turkish, Turkmen, Ukrainian,
-              Uppersorbian, Welsh ];
+              Uppersorbian, Welsh ]; */
 
     fs::create_dir_all(&dict_out).unwrap();
 
