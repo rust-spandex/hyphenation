@@ -284,13 +284,13 @@ fn main() {
         demand_rebuild(&path);
     }
 
-    for &lang in std_langs.iter() {
+    /* for &lang in std_langs.iter() {
         demand_rebuild(Patterns::sourcepath(lang, &paths));
         demand_rebuild(Exceptions::sourcepath(lang, &paths));
     }
     for &lang in ext_langs.iter() {
         demand_rebuild(ext::Patterns::sourcepath(lang, &paths));
-    }
+    } */
 }
 
 
