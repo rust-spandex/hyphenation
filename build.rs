@@ -26,6 +26,7 @@ use std::path::{Path, PathBuf};
 use hyphenation_commons::dictionary::*;
 use hyphenation_commons::dictionary::extended as ext;
 use hyphenation_commons::Language;
+use hyphenation_commons::Language::*;
 use hyphenation_commons::parse::*;
 
 
@@ -200,6 +201,11 @@ fn lib_rebuildables() -> Vec<PathBuf> {
         , Path::new("src").join("load.rs") ]
 }
 
+fn demand_rebuild<P>(path : P) where P : AsRef<Path> {
+    println!("cargo:rerun-if-changed={}", path.as_ref().display());
+}
+
+
 fn main() {
     let dict_folder = Path::new("dictionaries");
     let _std_out = "standard";
@@ -207,6 +213,20 @@ fn main() {
     let paths = Paths::new().unwrap();
     let dict_source = paths.source_item(dict_folder);
     let dict_out = paths.destine_item(dict_folder);
+
+    let ext_langs: Vec<hyphenation_commons::Language> = vec![]; // vec![Catalan, Hungarian];
+    let std_langs  = vec![EnglishUS];
+        /* vec![ Afrikaans, Armenian, Assamese, Basque, Belarusian, Bengali, Bulgarian, Catalan,
+              Chinese, Coptic, Croatian, Czech, Danish, Dutch, EnglishGB, EnglishUS, Esperanto,
+              Estonian, Ethiopic, Finnish, French, Friulan, Galician, Georgian, German1901,
+              German1996, GermanSwiss, GreekAncient, GreekMono, GreekPoly, Gujarati, Hindi,
+              Hungarian, Icelandic, Indonesian, Interlingua, Irish, Italian, Kannada, Kurmanji,
+              Latin, LatinClassic, LatinLiturgical, Latvian, Lithuanian, Malayalam, Marathi,
+              Mongolian, NorwegianBokmal, NorwegianNynorsk, Occitan, Oriya, Pali, Panjabi,
+              Piedmontese, Polish, Portuguese, Romanian, Romansh, Russian, Sanskrit,
+              SerbianCyrillic, SerbocroatianCyrillic, SerbocroatianLatin, SlavonicChurch, Slovak,
+              Slovenian, Spanish, Swedish, Tamil, Telugu, Thai, Turkish, Turkmen, Ukrainian,
+              Uppersorbian, Welsh ]; */
 
     fs::create_dir_all(&dict_out).unwrap();
 
@@ -258,6 +278,19 @@ fn main() {
         pocket_resources::package(all_paths.iter()).unwrap();
     }
 
+    // Specify which files will cause a rebuild if changed.
+
+    /*for path in lib_rebuildables().iter() {
+        demand_rebuild(&path);
+    }
+
+    for &lang in std_langs.iter() {
+        demand_rebuild(Patterns::sourcepath(lang, &paths));
+        demand_rebuild(Exceptions::sourcepath(lang, &paths));
+    }
+    for &lang in ext_langs.iter() {
+        demand_rebuild(ext::Patterns::sourcepath(lang, &paths));
+    } */
 }
 
 
