@@ -326,7 +326,7 @@ impl fmt::Display for Error {
             Error::IO(ref e) => e.fmt(f),
             Error::Serialization(ref e) => e.fmt(f),
             Error::Resource => {
-                let e = self as &error::Error;
+                let e = self as &dyn error::Error;
                 e.description().fmt(f)
             }
         }
