@@ -214,8 +214,8 @@ fn main() {
     let dict_source = paths.source_item(dict_folder);
     let dict_out = paths.destine_item(dict_folder);
 
-    let ext_langs = vec![]; // vec![Catalan, Hungarian];
-    let std_langs = vec![EnglishUS];
+    let ext_langs: Vec<hyphenation_commons::Language> = vec![]; // vec![Catalan, Hungarian];
+    let std_langs  = vec![EnglishUS];
         /* vec![ Afrikaans, Armenian, Assamese, Basque, Belarusian, Bengali, Bulgarian, Catalan,
               Chinese, Coptic, Croatian, Czech, Danish, Dutch, EnglishGB, EnglishUS, Esperanto,
               Estonian, Ethiopic, Finnish, French, Friulan, Galician, Georgian, German1901,
